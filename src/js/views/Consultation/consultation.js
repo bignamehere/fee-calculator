@@ -91,12 +91,12 @@ class Consultation extends Component {
                   </div>
                   <div className="fry-grid__1/2 fry-grid__1/2@m">
                     <div className="btn btn-show">
-                      <button onClick={this.handleUpdateClick} className="fry-btn fry-btn--secondary" type="button">{this.state.updateSettingsLabel}</button>
+                      <button onClick={this.handleUpdateClick} className="fry-btn fry-btn--primary" type="button">{this.state.updateSettingsLabel}</button>
                     </div>
                   </div>
                   <div className="fry-grid__1/2 fry-grid__1/2@m">
                     <div className="btn btn-rt btn-hide">
-                      <button onClick={this.handleContinueClick} className="fry-btn fry-btn--secondary" type="button">{this.state.adjustPaymentsLabel}</button>
+                      <button onClick={this.handleContinueClick} className="fry-btn fry-btn--primary" type="button">{this.state.adjustPaymentsLabel}</button>
                     </div>
                   </div>
                 </div>

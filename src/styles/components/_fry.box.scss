@@ -1,13 +1,18 @@
 .fry-box {
-  color: $color-white;
-  $box-bgcolor-default: $color-fry-green;
-  $box-border-color: $color-fry-tertiary-100;
+  color: $color-fry-primary-900;
+  $box-bgcolor-default: $color-fry-light-green;
+  $box-border-color: $color-fry-light-green;
   $box-padding: $size-medium;
 
   border: 1px solid $box-border-color;
   background-color: $box-bgcolor-default;
   padding: $box-padding;
   font-weight: 200;
+
+  &-rv {
+    color: $color-white;
+    background-color: #3c3f4c; //#365e63;
+  }
 
   &__bd {
     > :first-child {
@@ -19,7 +24,6 @@
   }
 
   &__title {
-    color: $color-white;
     @include h2();
     font-family: $font-sans;
     margin-top: 0;
@@ -27,38 +31,36 @@
 
     display: block;
     flex: 1;
-    border-bottom: 1px solid $color-white;
+    border-bottom: 1px solid $color-black;
+
   }
 
   &__title-bold {
-    background-color: #3c3f4c; //#365e63;
     font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica";
     font-weight: 500;
   }
 
   &__content {
-    color: $color-white;
+    //color: $color-black;
+
   }
 
   &__content--m {
     @include h3();
     padding: 0;
     font-family: $font-sans;
-    color: $color-white;
   }
 
   &__content--lg {
     font-size: $font-size-7;
     padding: 0;
     font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica";
-    color: $color-white;
   }
 
   &__content--xlg {
     font-size: $font-size-7 * 1.5;
     padding: 0;
     font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica";
-    color: $color-white;
   }
 
   &__centered {

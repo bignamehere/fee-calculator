@@ -7,7 +7,7 @@ import Lock from '../../components/Toggle/Lock/lock';
 import Modal from 'react-responsive-modal';
 import Instructions from '../../components/Instructions/instructions';
 
-import logo from '../../../img/fry-logo-w.png';
+import logo from '../../../img/freytag-logo-w.png';
 import './payment.scss';
 
 
@@ -528,8 +528,8 @@ class Payment extends Component {
               <div className="fry-grid__1/1 fry-grid__auto@m">
                 <h1 className="modal-custom__content-centered">{this.state.discountPriceLabel} ${this.state.investment - Math.round(this.state.investment*(this.state.perc/100))}</h1>
               </div>
-              <div className="fry-grid__1/1 fry-grid__1/4@m modal-custom__logo">
-                <img src={logo} className="logo" alt="Fry Orthodontics Logo" />
+              <div className="fry-grid__1/1 fry-grid__1/3@m modal-custom__logo">
+                <img src={logo} className="logo" alt="Freytag Orthodontics Logo" />
               </div>
             </div>
           
