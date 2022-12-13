@@ -975,6 +975,10 @@ export default function (elem, conf = {}) {
       setValue(v);
       redraw();
     },
+    set updateMaxValue(val){
+      config.value_max = val;
+      redraw();
+    },
     set config(new_config) {
       config = Object.assign({}, defaults, conf, new_config);
       init();

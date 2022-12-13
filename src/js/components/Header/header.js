@@ -1,7 +1,7 @@
 //
 //
 import React, { Component } from 'react';
-import logo from '../../../img/fry-logo-w.png';
+import logo from '../../../img/jones-logo-tr-w.png';
 import './header.scss';
 
 class Header extends Component {
@@ -20,14 +20,14 @@ class Header extends Component {
 
 	render() {
     return (
-			<div className="fry-header-app">
-				<div className="fry-header-app__bd">
-					<div className="fry-header-app__primary">
-						<span className="fry-header-app__app-name">
+			<div className="ds-header-app">
+				<div className="ds-header-app__bd">
+					<div className="ds-header-app__primary">
+						<span className="ds-header-app__app-name">
 							<span className="header-custom__app-name">{this.state.headerText}</span>
 						</span>
 					</div>
-					<div className="fry-header-app__secondary">
+					<div className="ds-header-app__secondary">
 						<img src={logo} className="logo" alt="logo" />
 					</div>
 				</div>

@@ -1,0 +1,82 @@
+// scss-lint:disable EmptyRule
+
+.ds-btn-group {
+
+  display: inline-block;
+  white-space: nowrap;
+
+  & + & {
+    margin-left: $size-base;
+  }
+
+  &--block {
+    display: flex;
+  }
+
+  &--small {}
+
+  &--large {}
+
+  &__item {
+
+    @include ds-button;
+    @include ds-button(alt);
+
+    & + & {
+
+      margin-left: -5px;
+
+      // scss-lint:disable SelectorFormat
+      .ds-btn-group--block & {
+        margin-left: -1px;
+      }
+
+    }
+
+    // scss-lint:disable SelectorFormat
+    .ds-btn-group--block & {
+      flex: auto;
+    }
+
+    // scss-lint:disable SelectorFormat
+    .ds-btn-group--small & { @include ds-button(small); }
+    .ds-btn-group--large & { @include ds-button(large); }
+
+    &:focus:not([disabled]),
+    &:active:not([disabled]) {
+      background-color: $color-ds-tertiary;
+    }
+
+    &:active:not([disabled]),
+    &:focus:not([disabled]) {
+      background-color: $button-alt;
+      color: $button-alt-text;
+    }
+
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
+    }
+
+    &:first-child {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &:last-child {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    &--active {
+
+      @include ds-button(primary);
+
+      &:hover:not([disabled]) {
+        color: $button-primary-text;
+      }
+
+    }
+
+  }
+
+}

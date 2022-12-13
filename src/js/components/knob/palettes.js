@@ -21,26 +21,26 @@ function LightenDarkenColor(col, amt) {
 }
 
 export default {
-  fry: {
+  /* jn: {
     bg_color: '#FFFFFF',
     bg_border_color: '#FFFFFF',
-    track_bg_color: LightenDarkenColor('#4e4084', 50),
-    track_color_init: LightenDarkenColor('#4e4084', -10),
-    track_color: LightenDarkenColor('#4e4084', -10),
-    cursor_color_init: LightenDarkenColor('#4e4084', -2),
-    cursor_color: LightenDarkenColor('#4e4084', -2),
-    markers_color: '#4e4084',
-    font_color: LightenDarkenColor('#4e4084', -20),
+    track_bg_color: LightenDarkenColor('#5AA3D2', 50),
+    track_color_init: LightenDarkenColor('#85c7f1', -10),
+    track_color: LightenDarkenColor('#0f589f', -10),
+    cursor_color_init: LightenDarkenColor('#0f589f', -2),
+    cursor_color: LightenDarkenColor('#00468B', -2),
+    markers_color: '#0f589f',
+    font_color: LightenDarkenColor('#0f589f', -20),
+  }, */
+  jn: {
+    bg_color: '#FFFFFF',
+    bg_border_color: '#FFFFFF',
+    track_bg_color: '#C7DFF0',
+    track_color_init: '#0057AD',
+    track_color: '#003B75',
+    cursor_color_init: '#FAB417',
+    cursor_color: '#5AA3D2',
+    markers_color: '#0f589f',
+    font_color: '#00468B',
   },
-  card: {
-    bg_color: '#FFFFFF',
-    bg_border_color: '#FFFFFF',
-    track_bg_color: '#4a80b5',//LightenDarkenColor('#003865', 99),
-    track_color_init: '#003865',
-    track_color: '#003865',
-    cursor_color_init: '#003865',
-    cursor_color: '#003865',
-    markers_color: '#003865',
-    font_color: '#003865',
-  }
 }

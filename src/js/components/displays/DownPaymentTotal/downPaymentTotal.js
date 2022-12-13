@@ -5,9 +5,9 @@ import React, { Component } from 'react';
 class DownPaymentTotal extends Component {
   render() {
     return (
-      <div className="fry-box fry-box-condensed">
-        <div className="fry-box__content--lg fry-box__centered">${this.props.value}</div>
-        <div className="fry-box__content--m fry-box__centered">{this.props.label}</div> 
+      <div className="ds-box ds-box-condensed">
+        <div className="ds-box__content--lg ds-box__centered">${this.props.value}</div>
+        <div className="ds-box__content--m ds-box__centered">{this.props.label}</div> 
       </div>
     );
   }

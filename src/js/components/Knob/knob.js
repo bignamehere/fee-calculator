@@ -5,11 +5,13 @@ import Knob from './core.js';  // 'svg-knob';
 //import Knob from './knobsrc.js';
 import './knob.scss';
 
-class FryKnob extends Component {
+class JnKnob extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
-      settings: {},
+    this.state = {
+      kRef: {}, 
+      //settings: {},
+      isLoaded: false
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -40,11 +42,20 @@ class FryKnob extends Component {
     this.k.config = obj;
   }
 
+  updateMaxValue(val){
+    try{
+      this.k.updateMaxValue = val;
+    } catch(e){
+      console.log('Object not instantiated yet')
+    }
+  }
+
   dataLoaded(){
     this.k = new Knob(
       this.dom,
       this.props.settings
     );
+    this.setState({ isLoaded: true });
     this.dom.addEventListener("change", this.handleChange);
   }
 
@@ -62,4 +73,4 @@ class FryKnob extends Component {
   }
 }
 
-export default FryKnob;
+export default JnKnob;

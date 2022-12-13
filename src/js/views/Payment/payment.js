@@ -1,13 +1,13 @@
 //
 //
 import React, { Component } from 'react';
-import FryKnob from '../../components/Knob/knob';
+import JnKnob from '../../components/Knob/knob';
 import Totals from '../../components/displays/Totals/totals';
 import Lock from '../../components/Toggle/Lock/lock';
 import Modal from 'react-responsive-modal';
 import Instructions from '../../components/Instructions/instructions';
 
-import logo from '../../../img/fry-logo-w.png';
+import logo from '../../../img/jones-logo-tr-w.png';
 import './payment.scss';
 
 
@@ -118,7 +118,6 @@ class Payment extends Component {
   }
 
   onInvestmentChange(amount){
-    console.log("payment - onInvestmentChange() -- "+ amount);
 //
 // this is NOT DRY... need to refactor
 //
@@ -425,7 +424,7 @@ class Payment extends Component {
   setKnobState(dpKnobData, mpKnobData, mKnobData, amount){
 
     dpKnobData.value_max = this.roundUp(dpKnobData.roundNumber, amount);
-    
+
     mpKnobData.value_max = this.roundUp(
       mpKnobData.roundNumber,
       Math.round( amount / mKnobData.value_min )
@@ -436,8 +435,8 @@ class Payment extends Component {
       MonthlyPaymentsKnobSettings: mpKnobData,
       MonthsKnobSettings: mKnobData
     });
-
     
+    this.refs.dpKnob.updateMaxValue(amount)
   }
 
   setKnobLock(e){
@@ -524,25 +523,25 @@ class Payment extends Component {
             <p className="modal-custom__content">
               {this.state.discountPopupContent}
             </p>
-            <div className="fry-grid">
-              <div className="fry-grid__1/1 fry-grid__auto@m">
+            <div className="ds-grid">
+              <div className="ds-grid__1/1 ds-grid__auto@m">
                 <h1 className="modal-custom__content-centered">{this.state.discountPriceLabel} ${this.state.investment - Math.round(this.state.investment*(this.state.perc/100))}</h1>
               </div>
-              <div className="fry-grid__1/1 fry-grid__1/4@m modal-custom__logo">
-                <img src={logo} className="logo" alt="Fry Orthodontics Logo" />
+              <div className="ds-grid__1/1 ds-grid__1/3@m modal-custom__logo">
+                <img src={logo} className="logo" alt="Jones Orthodontics Logo" />
               </div>
             </div>
           
           </Modal>
           
-          <div className="fry-grid app-knob-container">
+          <div className="ds-grid app-knob-container">
 
-            <div className="fry-grid__1/1 fry-grid__1/12@m"></div>
+            <div className="ds-grid__1/1 ds-grid__1/12@m"></div>
 
-            <div className="fry-grid__1/1 fry-grid__3/12@m">
+            <div className="ds-grid__1/1 ds-grid__3/12@m">
               <div className="knob-container">
 
-                <FryKnob ref="dpKnob"
+                <JnKnob ref="dpKnob"
                   roundNumber={ this.state.dpkRoundNumber }
                   settings={ this.state.DownPaymentKnobSettings }
                   onChange={ this.onDownPaymentChange }
@@ -566,10 +565,10 @@ class Payment extends Component {
 
               </div>
             </div>
-            <div className="fry-grid__1/1 fry-grid__4/12@m">
+            <div className="ds-grid__1/1 ds-grid__4/12@m">
               <div className="knob-container">
 
-                <FryKnob ref="mpKnob"
+                <JnKnob ref="mpKnob"
                   roundNumber={ this.state.mpkRoundNumber }
                   settings={ this.state.MonthlyPaymentsKnobSettings }
                   onChange={ this.onMonthlyPaymentsChange }
@@ -593,10 +592,10 @@ class Payment extends Component {
 
               </div>
             </div>
-            <div className="fry-grid__1/1 fry-grid__3/12@m">
+            <div className="ds-grid__1/1 ds-grid__3/12@m">
               <div className="knob-container">
               
-                <FryKnob ref="mKnob"
+                <JnKnob ref="mKnob"
                   roundNumber={ this.state.mkRoundNumber }
                   settings={ this.state.MonthsKnobSettings }
                   onChange={ this.onMonthsChange }
@@ -621,9 +620,9 @@ class Payment extends Component {
               </div>
             </div>
 
-          <div className="fry-grid__1/1 fry-grid__1/12@m"></div>
+          <div className="ds-grid__1/1 ds-grid__1/12@m"></div>
           
-          <div className="fry-grid__1/1 instructions-spacing">
+          <div className="ds-grid__1/1 instructions-spacing">
             <Instructions
               ref="instructions"
               dpAmount={this.state.zeroMonthsDownPaymentMin}
@@ -631,7 +630,7 @@ class Payment extends Component {
             />
           </div>
 
-          <div className="fry-grid__1/1">
+          <div className="ds-grid__1/1">
             <Totals ref="display"/>
           </div>
           

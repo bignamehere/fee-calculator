@@ -58,6 +58,8 @@ class AppTabs extends Component {
     this.setState({
       investment: e.investment
     });
+
+    console.log('apptabs > handleInvestmentChange',e.investment)
     
     this.setInvestmentAmount(e.investment);
   }
@@ -67,7 +69,12 @@ class AppTabs extends Component {
       paymentDisabled: false,
       investment: amount
     });
-    if(this.refs.paymentTab) this.refs.paymentTab.onInvestmentChange(amount);
+
+    if(this.refs.paymentTab) {
+      this.refs.paymentTab.onInvestmentChange(amount);
+    }else{
+      console.log('no payments tab')
+    }
   }
 
 	render() {

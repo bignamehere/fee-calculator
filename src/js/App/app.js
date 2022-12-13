@@ -84,8 +84,8 @@ class App extends Component {
     return (
       <div>
         <Header ref="appHeader"/>
-        <div className={'fry-nav-global'}>
-          <div className={'fry-nav-global__bd'}>
+        <div className={'ds-nav-global'}>
+          <div className={'ds-nav-global__bd'}>
             <AppTabs ref="appTabs" />
           </div>
         </div>
