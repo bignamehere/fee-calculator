@@ -1,6 +1,6 @@
 {
   "short_name": "Braces Calculator",
-  "name": "Fry Orthodontics - Braces Calculator",
+  "name": "Jones Orthodontics - Braces Calculator",
   "icons": [
     {
       "src": "favicon.ico",
@@ -11,5 +11,5 @@
   "start_url": "./index.html",
   "display": "standalone",
   "theme_color": "#ffffff",
-  "background_color": "#902e38"
+  "background_color": "#5AA3D2"
 }
