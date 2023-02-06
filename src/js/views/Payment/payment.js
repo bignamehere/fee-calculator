@@ -493,7 +493,7 @@ class Payment extends Component {
 
   showDiscountPopup(){
     if(this.state.showDiscount){
-      this.onOpenModal();
+      if(this.state.perc > 0) this.onOpenModal();
       this.setState({showDiscount:false});
     }
   }
