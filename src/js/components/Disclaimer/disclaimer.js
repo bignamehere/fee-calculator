@@ -36,8 +36,8 @@ class Disclaimer extends Component {
 
   render() {
     return (
-      <div className="disclaimer">
-        <p>{this.state.disclaimerText} | <button onClick={this.handleLanguageClick} className={"fry-btn fry-btn--flat"}>{this.state.langButtonLabel}</button></p> 
+      <div className="fry-m-t--s disclaimer">
+        <span>{this.state.disclaimerText} | <button onClick={this.handleLanguageClick} className={"fry-btn fry-btn--flat"}>{this.state.langButtonLabel}</button></span> 
       </div>
     );
   }

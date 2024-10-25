@@ -311,7 +311,7 @@ export default function (elem, conf = {}) {
    */
   function setValue(v) {
     if( !isLocked() ){
-      console.log(`setValue(${v})`);
+      //console.log(`setValue(${v})`);
       if (v < config.value_min) {
         value = config.value_min;
       } else if (v > config.value_max) {

@@ -19,7 +19,11 @@ class Payment extends Component {
       dpKnobLocked: false,
       mpKnobLocked: false,
       mKnobLocked: false,
-      showDiscount: true
+      showDiscount: true,
+      originalInvestment: 0,
+      initFeeAmount: 0,
+      feeButtonText: 'Add Fee',
+      feeDisabled: false
     };
 
     this.onDownPaymentChange = this.onDownPaymentChange.bind(this);
@@ -29,6 +33,8 @@ class Payment extends Component {
     this.recalculateTotals = this.recalculateTotals.bind(this);
     this.setKnobLock = this.setKnobLock.bind(this);
     this.setKnobState = this.setKnobState.bind(this);
+    this.handleAddFeeClick = this.handleAddFeeClick.bind(this);
+    this.handleFeeInputUpdate = this.handleFeeInputUpdate.bind(this);
 
     this.calculating = false;
   }
@@ -103,6 +109,13 @@ class Payment extends Component {
 
     // SET INITIAL STATE OF KNOBS
     if(!this.calculating) this.onInvestmentChange(data.DownPaymentKnobSettings.value_max);
+    // SET INITIAL STATE OF FEE BUTTON
+    this.setFeeButtonDisabled(true)
+  }
+
+  setFeeButtonDisabled(_boo){
+    let btn = document.getElementById('fee-button');
+    btn.disabled = _boo;
   }
 
   onDownPaymentChange(amount){
@@ -149,6 +162,48 @@ class Payment extends Component {
 
     this.recalculateTotals("total", amount);
   }
+
+  handleAddFeeClick(e){
+    // get value from input
+    let feeInput = document.getElementById('fee-amount');
+    console.log('originalInvestment >', this.state.originalInvestment)
+
+    if(this.state.feeDisabled){
+      //
+      feeInput.value = '';
+      feeInput.disabled = false;
+      this.setState({feeButtonText: 'Add Fee'});
+      this.setState({feeDisabled: false});
+      //
+      console.log('set to Org', this.state.originalInvestment)
+      this.onInvestmentChange(this.state.originalInvestment);
+      this.setButtonStatus(feeInput.value)
+
+    } else {
+      //
+      feeInput.disabled = true;
+      this.setState({feeButtonText: 'Clear'});
+      this.setState({feeDisabled: true});
+      this.setState({originalInvestment: this.state.investment});
+      //
+      let newFee = feeInput.value <= 0 ? 0 : parseInt(feeInput.value, 10);
+      console.log('newFee >',newFee)
+      console.log('set to New', this.state.investment + newFee)
+      this.onInvestmentChange(this.state.investment + newFee);
+      this.setButtonStatus(newFee)
+    }
+
+  }
+
+  setButtonStatus(_val){
+    if(_val > this.state.initFeeAmount && _val != undefined){
+      this.setFeeButtonDisabled(false)
+    } else { 
+      this.setFeeButtonDisabled(true)
+    }
+  }
+
+  handleFeeInputUpdate(e){ this.setButtonStatus( e.currentTarget.value ) }
 
   ///
   ///
@@ -624,11 +679,40 @@ class Payment extends Component {
           <div className="fry-grid__1/1 fry-grid__1/12@m"></div>
           
           <div className="fry-grid__1/1 instructions-spacing">
-            <Instructions
-              ref="instructions"
-              dpAmount={this.state.zeroMonthsDownPaymentMin}
-              mAmount={this.state.zeroDownPaymentMonthsMax}
-            />
+
+
+            <div className="fry-grid">
+                <div className="fry-grid__1/1 fry-grid__1/3@l">
+         
+                  <div className="fry-level">
+                    <div>
+                      <span className="fry-affix">
+                        <label htmlFor="affix-example__00" className="fry-affix__prefix" aria-hidden="true" title="Dollars">$</label>
+                        <input id="fee-amount" className="fry-input fry-affix__item" onChange={this.handleFeeInputUpdate} placeholder="0" type="number" name="fee-amount" />
+                      </span>
+
+                    </div>        
+                    <div>
+                      <button id="fee-button" onClick={this.handleAddFeeClick} className="fry-btn fry-btn--secondary" type="submit">
+                        {this.state.feeButtonText}
+                      </button>
+                    </div>
+                    
+                  </div>
+
+                </div>
+                <div className="fry-grid__1/1 fry-grid__2/3@l">
+                    
+                  <Instructions
+                    ref="instructions"
+                    dpAmount={this.state.zeroMonthsDownPaymentMin}
+                    mAmount={this.state.zeroDownPaymentMonthsMax}
+                  />
+
+                </div>
+            </div>
+          
+            
           </div>
 
           <div className="fry-grid__1/1">
