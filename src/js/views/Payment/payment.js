@@ -22,8 +22,10 @@ class Payment extends Component {
       showDiscount: true,
       originalInvestment: 0,
       initFeeAmount: 0,
-      feeButtonText: 'Add Fee',
-      feeDisabled: false
+      feeButtonText: '',
+      feeDisabled: false,
+      addFeeButtonLabel: '',
+      removeFeeButtonLabel: ''
     };
 
     this.onDownPaymentChange = this.onDownPaymentChange.bind(this);
@@ -67,7 +69,10 @@ class Payment extends Component {
       discountPopupHeaderLabel: newPopupHeaderLabel,
       discountPopupContent: newPopupContent,
       discountPriceLabel: data.discountPriceLabel,
-      instructionsText: data.instructionsText
+      instructionsText: data.instructionsText,
+      feeButtonText: this.state.feeDisabled ? data.removeFeeButtonLabel : data.addFeeButtonLabel,
+      addFeeButtonLabel: data.addFeeButtonLabel,
+      removeFeeButtonLabel: data.removeFeeButtonLabel
     });
 
     if(this.refs.display) this.refs.display.setText(data);
@@ -172,7 +177,7 @@ class Payment extends Component {
       //
       feeInput.value = '';
       feeInput.disabled = false;
-      this.setState({feeButtonText: 'Add Fee'});
+      this.setState({feeButtonText: this.state.addFeeButtonLabel});
       this.setState({feeDisabled: false});
       //
       console.log('set to Org', this.state.originalInvestment)
@@ -182,7 +187,7 @@ class Payment extends Component {
     } else {
       //
       feeInput.disabled = true;
-      this.setState({feeButtonText: 'Clear'});
+      this.setState({feeButtonText: this.state.removeFeeButtonLabel});
       this.setState({feeDisabled: true});
       this.setState({originalInvestment: this.state.investment});
       //
@@ -681,7 +686,7 @@ class Payment extends Component {
           <div className="fry-grid__1/1 instructions-spacing">
 
 
-            <div className="fry-grid">
+            <div className="fry-grid fry-m-t--xl fry-m-t--none@s fry-p--s fry-p--none@m">
                 <div className="fry-grid__1/1 fry-grid__1/3@l">
          
                   <div className="fry-level">
