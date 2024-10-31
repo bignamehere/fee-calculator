@@ -22,11 +22,13 @@
 @import 'elements/fry.form-elements.textfields';
 @import 'elements/fry.form-elements.checkbox-radio';
 @import 'elements/fry.form-elements.select';
+@import 'elements/fry.form-elements.affix';
 @import 'elements/fry.table';
 @import 'elements/fry.label';
 
 // Components -------------- ///////////////////////////////////////////////////
 
+@import 'components/fry.level';
 @import 'components/fry.box';
 @import 'components/fry.header-app';
 @import 'components/fry.nav-global';

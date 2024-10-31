@@ -56,6 +56,11 @@ $color-fry-red-200: tint($color-secondary-dark, 70%);
 $color-fry-red-100: tint($color-secondary-dark, 88%);
 $color-fry-red-900: $color-secondary-darkest;
 
+$color-fry-yellow: $color-gold; // from USWDS
+$color-fry-yellow-300: $color-gold-light;
+$color-fry-yellow-200: $color-gold-lighter;
+$color-fry-yellow-100: $color-gold-lightest;
+
 // Base
 $color-base:  $color-fry-tertiary-900;
 $color-white: #fff;
@@ -72,6 +77,45 @@ $color-fry-link-visited: $color-visited;
 // Semantic
 $color-title: $color-fry-tertiary;
 $color-fry-site-bg: tint($color-fry-secondary, 97%); // Super light gray bg, but with a slight tint of blue
+
+$color-fry-site-backcground: $color-fry-site-bg;
+$color-fry-base-bg: $color-fry-site-bg;
+$color-fry-base-background: $color-fry-site-bg;
+
+$marker-text-color: $color-base;
+
+$marker-bgc: $color-fry-tertiary-200;
+$marker-bgc-neutral: $color-fry-white;
+$marker-bgc-general: $color-fry-secondary-200;
+$marker-bgc-alert: $color-fry-red-200;
+$marker-bgc-warning: $color-fry-yellow-200;
+$marker-bgc-success: $color-fry-primary-200;
+
+// ---------------------------------------------------------------------------
+// Borders
+
+$border-none : 0;
+$border-xxs  : 1px;
+$border-xs   : ($size-base / 2);
+$border-s    : $size-base;
+$border-m    : $size-small;
+$border-l    : $size-default;
+
+$radius-none : 0;
+$radius-s    : $size-base;
+$radius-m    : ($size-base * 2);
+$radius-l    : ($size-base * 4);
+$radius-full : 999.9rem;
+$radius-oval : 100%;
+
+// ---------------------------------------------------------------------------
+// Shadows
+$shadow-color: transparentize($color-fry-tertiary, .85);
+
+$shadow-size-popout:  0 $size-default  $size-default (-$size-default) $shadow-color, 0 $size-medium $size-large   $size-base  $shadow-color   , 0 $size-small    $size-extra-large $size-small    $shadow-color;
+$shadow-size-overlay: 0 $size-base     $size-base    (-($size-base))  $shadow-color, 0 $size-small  $size-default ($size-base/ 2) $shadow-color, 0 $size-base $size-default ($size-base/ 2) $shadow-color;
+$shadow-size-raised:  0 ($size-base/ 2) $size-base    (-($size-base))  $shadow-color, 0 $size-base   $size-base 0  $shadow-color, 0 ($size-base/ 2) $size-default 0 $shadow-color;
+$shadow-size-none:    none;
 
 // ---------------------------------------------------------------------------
 // Typography

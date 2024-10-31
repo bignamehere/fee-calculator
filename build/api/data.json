@@ -79,7 +79,9 @@
       "monthlyPaymentsDisplayLabel": "Monthly Payment",
       "discountPopupHeaderLabel": "Pay In Full Discount - |payFullPerc|% Off!",
       "discountPopupContent": "At Freytag Orthodontics, when you pay the full amount for your braces, you will receive a |payFullPerc|% discount on your investment.",
-      "discountPriceLabel": "Price"
+      "discountPriceLabel": "Price",
+      "addFeeButtonLabel": "Add Fee",
+      "removeFeeButtonLabel": "Clear"
     },
     "es" : {
       "headerTextLabel": "Calculadora de tarifas",
@@ -104,7 +106,9 @@
       "monthlyPaymentsDisplayLabel": "Pago Mensual",
       "discountPopupHeaderLabel": "Pagar con descuento completo - |payFullPerc|% de descuento!",
       "discountPopupContent": "En Freytag Orthodontics, cuando pague el monto total por sus llaves, recibirá un |payFullPerc|% de descuento en su inversión.",
-      "discountPriceLabel": "Precio"
+      "discountPriceLabel": "Precio",
+      "addFeeButtonLabel": "Agregar Tarifa",
+      "removeFeeButtonLabel": "Limpiar"
     }
   }
 }
