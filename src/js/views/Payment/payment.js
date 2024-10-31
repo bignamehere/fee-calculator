@@ -19,7 +19,13 @@ class Payment extends Component {
       dpKnobLocked: false,
       mpKnobLocked: false,
       mKnobLocked: false,
-      showDiscount: true
+      showDiscount: true,
+      originalInvestment: 0,
+      initFeeAmount: 0,
+      feeButtonText: '',
+      feeDisabled: false,
+      addFeeButtonLabel: '',
+      removeFeeButtonLabel: ''
     };
 
     this.onDownPaymentChange = this.onDownPaymentChange.bind(this);
@@ -29,6 +35,8 @@ class Payment extends Component {
     this.recalculateTotals = this.recalculateTotals.bind(this);
     this.setKnobLock = this.setKnobLock.bind(this);
     this.setKnobState = this.setKnobState.bind(this);
+    this.handleAddFeeClick = this.handleAddFeeClick.bind(this);
+    this.handleFeeInputUpdate = this.handleFeeInputUpdate.bind(this);
 
     this.calculating = false;
   }
@@ -61,7 +69,10 @@ class Payment extends Component {
       discountPopupHeaderLabel: newPopupHeaderLabel,
       discountPopupContent: newPopupContent,
       discountPriceLabel: data.discountPriceLabel,
-      instructionsText: data.instructionsText
+      instructionsText: data.instructionsText,
+      feeButtonText: this.state.feeDisabled ? data.removeFeeButtonLabel : data.addFeeButtonLabel,
+      addFeeButtonLabel: data.addFeeButtonLabel,
+      removeFeeButtonLabel: data.removeFeeButtonLabel      
     });
 
     if(this.refs.display) this.refs.display.setText(data);
@@ -103,6 +114,13 @@ class Payment extends Component {
 
     // SET INITIAL STATE OF KNOBS
     if(!this.calculating) this.onInvestmentChange(data.DownPaymentKnobSettings.value_max);
+    // SET INITIAL STATE OF FEE BUTTON
+    this.setFeeButtonDisabled(true)
+  }
+
+  setFeeButtonDisabled(_boo){
+    let btn = document.getElementById('fee-button');
+    btn.disabled = _boo;
   }
 
   onDownPaymentChange(amount){
@@ -148,6 +166,48 @@ class Payment extends Component {
 
     this.recalculateTotals("total", amount);
   }
+
+  handleAddFeeClick(e){
+    // get value from input
+    let feeInput = document.getElementById('fee-amount');
+    console.log('originalInvestment >', this.state.originalInvestment)
+
+    if(this.state.feeDisabled){
+      //
+      feeInput.value = '';
+      feeInput.disabled = false;
+      this.setState({feeButtonText: this.state.addFeeButtonLabel});
+      this.setState({feeDisabled: false});
+      //
+      console.log('set to Org', this.state.originalInvestment)
+      this.onInvestmentChange(this.state.originalInvestment);
+      this.setButtonStatus(feeInput.value)
+
+    } else {
+      //
+      feeInput.disabled = true;
+      this.setState({feeButtonText: this.state.removeFeeButtonLabel});
+      this.setState({feeDisabled: true});
+      this.setState({originalInvestment: this.state.investment});
+      //
+      let newFee = feeInput.value <= 0 ? 0 : parseInt(feeInput.value, 10);
+      console.log('newFee >',newFee)
+      console.log('set to New', this.state.investment + newFee)
+      this.onInvestmentChange(this.state.investment + newFee);
+      this.setButtonStatus(newFee)
+    }
+
+  }
+
+  setButtonStatus(_val){
+    if(_val > this.state.initFeeAmount && _val != undefined){
+      this.setFeeButtonDisabled(false)
+    } else { 
+      this.setFeeButtonDisabled(true)
+    }
+  }
+
+  handleFeeInputUpdate(e){ this.setButtonStatus( e.currentTarget.value ) }
 
   ///
   ///
@@ -436,7 +496,7 @@ class Payment extends Component {
       MonthsKnobSettings: mKnobData
     });
     
-    this.refs.dpKnob.updateMaxValue(amount)
+    this.refs.dpKnob.updateMaxValue(amount); // <-- needed??
   }
 
   setKnobLock(e){
@@ -623,11 +683,37 @@ class Payment extends Component {
           <div className="ds-grid__1/1 ds-grid__1/12@m"></div>
           
           <div className="ds-grid__1/1 instructions-spacing">
-            <Instructions
-              ref="instructions"
-              dpAmount={this.state.zeroMonthsDownPaymentMin}
-              mAmount={this.state.zeroDownPaymentMonthsMax}
-            />
+
+            <div className="ds-grid ds-m-t--xl ds-m-t--none@s ds-p--s ds-p--none@m">
+              <div className="ds-grid__1/1 ds-grid__1/3@l">
+        
+                <div className="ds-level">
+                  <div>
+                    <span className="ds-affix">
+                      <label htmlFor="affix-example__00" className="ds-affix__prefix" aria-hidden="true" title="Dollars">$</label>
+                      <input id="fee-amount" className="ds-input ds-affix__item" onChange={this.handleFeeInputUpdate} placeholder="0" type="number" name="fee-amount" />
+                    </span>
+
+                  </div>        
+                  <div>
+                    <button id="fee-button" onClick={this.handleAddFeeClick} className="ds-btn ds-btn--secondary" type="submit">
+                      {this.state.feeButtonText}
+                    </button>
+                  </div>
+                  
+                </div>
+
+              </div>
+
+              <div className="ds-grid__1/1 ds-grid__2/3@l">
+                <Instructions
+                  ref="instructions"
+                  dpAmount={this.state.zeroMonthsDownPaymentMin}
+                  mAmount={this.state.zeroDownPaymentMonthsMax}
+                />
+              </div>
+              </div>
+
           </div>
 
           <div className="ds-grid__1/1">
