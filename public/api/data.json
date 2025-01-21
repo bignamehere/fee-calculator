@@ -38,7 +38,7 @@
     },
     "MonthsKnobSettings" : {
       "value_min": 12,
-      "value_max": 24,
+      "value_max": 28,
       "initial_value": 18,
       "track_bg_radius": 40,
       "track_bg_width": 12,
