@@ -2,8 +2,8 @@
   "AppConfig" : {
     "PayInFullPercentage": 0,
     "DownPaymentKnobSettings": {
-      "value_min": 300,
-      "value_max": 6000,
+      "value_min": 500,
+      "value_max": 6500,
       "initial_value": 1500,
       "track_bg_radius": 40,
       "track_bg_width": 12,
@@ -17,7 +17,7 @@
       "palette": "fry",
       "roundNumber": 100,
       "prefix": "$",
-      "zeroMonthsDownPaymentMin": 300
+      "zeroMonthsDownPaymentMin": 500
     },
     "MonthlyPaymentsKnobSettings" : {
       "value_min": 0,
@@ -61,6 +61,7 @@
       "tabOneLabel": "Treatment Fee",
       "tabTwoLabel": "Payment Options",
       "treatmentCostLabel": "Treatment Cost",
+      "drgFeeCostLabel": "DRG Fee",
       "requiredLabel": "Required",
       "insuranceCoverageLabel": "Insurance Coverage",
       "additionalSavingsLabel": "Additional Savings",
@@ -88,6 +89,7 @@
       "tabOneLabel": "Costo de Tratamiento",
       "tabTwoLabel": "Opciones de pago",
       "treatmentCostLabel": "Costo de tratamiento",
+      "drgFeeCostLabel": "Costo de DRG tarifa",
       "requiredLabel": "Requerido",
       "insuranceCoverageLabel": "Cobertura del seguro",
       "additionalSavingsLabel": "Ahorros adicionales",  

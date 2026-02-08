@@ -43,6 +43,7 @@ class Consultation extends Component {
   setText(data){
     this.setState({
       treatmentCostLabel: data.treatmentCostLabel,
+      drgFeeCostLabel: data.drgFeeCostLabel,
       requiredLabel: data.requiredLabel,
       insuranceCoverageLabel: data.insuranceCoverageLabel,
       additionalSavingsLabel: data.additionalSavingsLabel,
@@ -55,11 +56,12 @@ class Consultation extends Component {
   getInvestment(){
 
     let initialCost = document.getElementById('initialCost').value <= 0 ? 0 : parseInt(document.getElementById('initialCost').value, 10); 
+    let drgFee = document.getElementById('drgFee').value <= 0 ? 0 : parseInt(document.getElementById('drgFee').value, 10); 
     let insurance = document.getElementById('insurance').value  <= 0 ? 0 : parseInt(document.getElementById('insurance').value, 10);
     let discounts = document.getElementById('discounts').value <= 0 ? 0 : parseInt(document.getElementById('discounts').value, 10);
 
-    console.log("consultation.js - getInvestment() " + initialCost + " " + insurance + " " + discounts );
-    let total = isNaN(initialCost - (insurance + discounts)) ? "" : initialCost - (insurance + discounts);
+    console.log("consultation.js - getInvestment() " + initialCost + " " + drgFee + "" + insurance + " " + discounts );
+    let total = isNaN((initialCost + drgFee) - (insurance + discounts)) ? "" : (initialCost + drgFee) - (insurance + discounts);
     return total;
   }
 
@@ -80,14 +82,20 @@ class Consultation extends Component {
                     </div>
                   
                     <div className="fry-field">
-                      <label className="fry-field__label" htmlFor="insurance">{this.state.insuranceCoverageLabel} </label>
-                      <input className="fry-input fry-field__item" id="insurance" name="insurance" type="number" placeholder="$" value={this.state.insurance}/>
-                    </div>
-                  
-                    <div className="fry-field">
                       <label className="fry-field__label" htmlFor="discounts">{this.state.additionalSavingsLabel} </label>
                       <input className="fry-input fry-field__item" id="discounts" name="discounts" type="number" placeholder="$" value={this.state.discounts}/>
                     </div>
+
+                    <div className="fry-field">
+                      <label className="fry-field__label" htmlFor="insurance">{this.state.insuranceCoverageLabel} </label>
+                      <input className="fry-input fry-field__item" id="insurance" name="insurance" type="number" placeholder="$" value={this.state.insurance}/>
+                    </div>
+
+                    <div className="fry-field">
+                      <label className="fry-field__label" htmlFor="drgFee">{this.state.drgFeeCostLabel} </label>
+                      <input className="fry-input fry-field__item" id="drgFee" name="drgFee" type="number" placeholder="$" value={this.state.drgFee}/>
+                    </div>
+
                   </div>
                   <div className="fry-grid__1/2 fry-grid__1/2@m">
                     <div className="btn btn-show">
