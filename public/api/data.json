@@ -1,6 +1,6 @@
 {
   "AppConfig" : {
-    "PayInFullPercentage": 0,
+    "PayInFullPercentage": 5,
     "DownPaymentKnobSettings": {
       "value_min": 500,
       "value_max": 6500,
